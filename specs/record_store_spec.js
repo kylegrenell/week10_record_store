@@ -11,4 +11,8 @@ describe("Record Store", function(){
     assert.equal("Amoeba Music", amoebaMusic.name);
   })
 
+  it("Should have a city", function(){
+    assert.equal("New York City", roughTrade.city);
+  })
+
 });
