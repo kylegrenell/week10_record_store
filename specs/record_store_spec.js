@@ -78,6 +78,7 @@ describe("Record Store", function(){
     roughTrade.add(soulwax);
     roughTrade.sell(cameraObscura);
     assert.equal(2, roughTrade.stock.length);
+    assert.equal(18.98, roughTrade.inventory)
     console.log(roughTrade.stock);
   });
 
