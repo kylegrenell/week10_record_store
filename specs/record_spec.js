@@ -1,5 +1,5 @@
 var assert = require("assert");
-
+var RecordStore = require("../record_store");
 var Record = require("../record");
 
 var theHives = new Record("The Hives", "Vini Vidi Vicious", 9.99);
@@ -20,19 +20,5 @@ describe("Records", function(){
   it("should find the price of the record", function(){
     assert.equal(8.99, soulwax.price);
   })
-
-  it("should have a record store");
-
-  it("record store should have a name");
-
-  it("record store should have a city");
-
-  it("record store should have stock");
-
-  it("record store should have cash in the bank");
-
-  it("record store can add records to stock");
-
-  it("record store should list inventory");
 
 });
