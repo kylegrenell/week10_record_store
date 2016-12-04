@@ -8,7 +8,6 @@ var RecordStore = function(name, city){
 };
 
 
-
 RecordStore.prototype = {
 
   add: function(record){
@@ -23,13 +22,17 @@ RecordStore.prototype = {
 
   list: function(){
     return this.collection;
+  },
+
+  report: function(){
+    var stockValue = this.collection.reduce(function(sum, record) {
+      return sum + record.price;
+    }, 0
+    );
+    return "Balance for " + this.name + " is " + stockValue + ".\nIt has " + this.collection.length + " records in stock.";
   }
 
 };
-
-
-
-
 
 
 module.exports = RecordStore;

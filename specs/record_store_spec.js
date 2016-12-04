@@ -85,4 +85,11 @@ describe("Record Store", function(){
     console.log(roughTrade.inventory);
   });
 
+  it("Should be able to give financial report", function(){
+    roughTrade.add(cameraObscura);
+    roughTrade.add(hives);
+    roughTrade.add(soulwax);
+    assert.equal("Balance for Rough Trade is 30.93.\nIt has 3 records in stock.", roughTrade.report());
+  });
+
 });
