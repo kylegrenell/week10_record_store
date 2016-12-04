@@ -2,8 +2,7 @@ var RecordStore = function(name, city){
 
   this.name = name;
   this.city = city;
-  this.stock = [];
-  this.funds = 0;
+  this.collection = [];
   this.inventory = 0;
 };
 
@@ -12,17 +11,17 @@ var RecordStore = function(name, city){
 RecordStore.prototype = {
 
   add: function(record){
-    this.stock.push(record);
+    this.collection.push(record);
     this.inventory += record.price;
   },
 
   sell: function(record){
-    this.stock.pop(record);
+    this.collection.pop(record);
     this.inventory -= record.price;
   },
 
   list: function(){
-    return this.stock;
+    return this.collection;
   }
 
 };

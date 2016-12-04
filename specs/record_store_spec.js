@@ -2,14 +2,16 @@ var assert = require("assert");
 
 var RecordStore = require("../record_store");
 var Record = require("../record");
-
-var amoeba;
-var roughTrade;
-var cameraObscura;
-var hives;
-var soulwax;
+var RecordCollector = require("../record_collector");
 
 describe("Record Store", function(){
+
+  var amoeba;
+  var roughTrade;
+  var cameraObscura;
+  var hives;
+  var soulwax;
+  var collector;
 
   beforeEach(function(){
 
@@ -18,7 +20,7 @@ describe("Record Store", function(){
   cameraObscura = new Record("Camera Obscura", "Lets get out of this country", 11.95);
   hives = new Record("The Hives", "Vini Vidi Vicious", 9.99);
   soulwax = new Record("Soulwax", "Nite Versions", 8.99);
-
+  collector = new RecordCollector("humphry", 50);
   });
 
   it("Should have a name", function(){
@@ -32,20 +34,20 @@ describe("Record Store", function(){
   });
 
   it('Should start with no records', function(){
-    assert.equal(0, amoeba.stock.length);
-    assert.equal(0, roughTrade.stock.length);
-    console.log(amoeba.stock);
-    console.log(roughTrade.stock);
+    assert.equal(0, amoeba.collection.length);
+    assert.equal(0, roughTrade.collection.length);
+    console.log(amoeba.collection);
+    console.log(roughTrade.collection);
   });
 
   it('Should be able to add records', function(){
     amoeba.add(cameraObscura);
     amoeba.add(hives);
     roughTrade.add(soulwax);
-    assert.equal(2, amoeba.stock.length);
-    assert.equal(1, roughTrade.stock.length);
-    console.log(amoeba.stock);
-    console.log(roughTrade.stock);
+    assert.equal(2, amoeba.collection.length);
+    assert.equal(1, roughTrade.collection.length);
+    console.log(amoeba.collection);
+    console.log(roughTrade.collection);
   });
 
   it("Should list the added inventory", function(){
@@ -54,7 +56,7 @@ describe("Record Store", function(){
   });
 
   it('Should start with no money in bank', function(){
-    assert.equal(0, amoeba.funds);
+    assert.equal(0, amoeba.inventory);
     console.log(amoeba.inventory);
   });
 
@@ -72,14 +74,21 @@ describe("Record Store", function(){
     console.log(amoeba.inventory);
   });
 
-  it("Should be able to sell a record from stock", function(){
+  it("Should be able to sell a record from collection", function(){
     roughTrade.add(cameraObscura);
     roughTrade.add(hives);
     roughTrade.add(soulwax);
     roughTrade.sell(cameraObscura);
-    assert.equal(2, roughTrade.stock.length);
+    assert.equal(2, roughTrade.collection.length);
     assert.equal(18.98, roughTrade.inventory)
-    console.log(roughTrade.stock);
+    console.log(roughTrade.collection);
+    console.log(roughTrade.inventory);
   });
+
+  // it("should be able to sell a record to a collector", function(){
+  //   roughTrade.add(cameraObscura);
+  //   collector.buy(cameraObscura);
+  //   assert.equal(1, collector.records);
+  // });
 
 });
