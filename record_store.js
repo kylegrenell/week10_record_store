@@ -25,13 +25,22 @@ RecordStore.prototype = {
   },
 
   report: function(){
-    var stockValue = this.collection.reduce(function(sum, record) {
+    var stockValue = this.collection.reduce(function(sum, record){
       return sum + record.price;
     }, 0
     );
     return "Balance for " + this.name + " is " + stockValue + ".\nIt has " + this.collection.length + " records in stock.";
-  }
+  },
 
+  getTitle: function(title){
+    var titleChecker = this.collection.find(function(record){
+      return record.title === title;
+    }); 
+    { 
+      return titleChecker;
+    }
+  }
+      
 };
 
 
