@@ -20,7 +20,7 @@ describe("Record Store", function(){
   cameraObscura = new Record("Camera Obscura", "Lets get out of this country", 11.95);
   hives = new Record("The Hives", "Vini Vidi Vicious", 9.99);
   soulwax = new Record("Soulwax", "Nite Versions", 8.99);
-  collector = new RecordCollector("humphry", 50);
+  collector = new RecordCollector("humphry", 100);
   });
 
   it("Should have a name", function(){
@@ -84,11 +84,5 @@ describe("Record Store", function(){
     console.log(roughTrade.collection);
     console.log(roughTrade.inventory);
   });
-
-  // it("should be able to sell a record to a collector", function(){
-  //   roughTrade.add(cameraObscura);
-  //   collector.buy(cameraObscura);
-  //   assert.equal(1, collector.records);
-  // });
 
 });

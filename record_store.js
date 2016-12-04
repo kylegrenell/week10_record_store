@@ -4,6 +4,7 @@ var RecordStore = function(name, city){
   this.city = city;
   this.collection = [];
   this.inventory = 0;
+  
 };
 
 
