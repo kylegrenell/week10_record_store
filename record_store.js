@@ -17,7 +17,11 @@ RecordStore.prototype = {
   },
 
   sell: function(record){
-    this.collection.pop(record);
+    // this.collection.pop(record);
+    // pop removes from end of array.. only works if want to remove end item, or singular
+    this.collection.splice(0, 1);
+    // drums.splice(0,1);
+    // We remove items using splice(!). It returns an array containing the deleted items.
     this.balance -= record.price;
   },
 
