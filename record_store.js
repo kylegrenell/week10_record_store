@@ -3,7 +3,7 @@ var RecordStore = function(name, city){
   this.name = name;
   this.city = city;
   this.collection = [];
-  this.inventory = 0;
+  this.balance = 0;
   
 };
 
@@ -11,13 +11,14 @@ var RecordStore = function(name, city){
 RecordStore.prototype = {
 
   add: function(record){
-    this.collection.push(record);
-    this.inventory += record.price;
+    var collect = this.collection.push(record);
+    this.balance += record.price;
+    return collect;
   },
 
   sell: function(record){
     this.collection.pop(record);
-    this.inventory -= record.price;
+    this.balance -= record.price;
   },
 
   list: function(){
@@ -25,8 +26,10 @@ RecordStore.prototype = {
   },
 
   report: function(){
-    var stockValue = this.collection.reduce(function(sum, record){
-      return sum + record.price;
+    var stockValue = this.collection.reduce(function(total, record){
+      // var sum = testArray.reduce(function(acc, item)
+      // {return acc + item}, 0);
+      return total + record.price;
     }, 0
     );
     return "Balance for " + this.name + " is " + stockValue + ".\nIt has " + this.collection.length + " records in stock.";

@@ -22,6 +22,7 @@ describe("Record Store", function(){
   soulwax = new Record("Soulwax", "Nite Versions", 8.99);
   collector = new RecordCollector("humphry", 100);
 
+
   });
 
   it("Should have a name", function(){
@@ -62,22 +63,22 @@ describe("Record Store", function(){
   }); 
 
   it('Should start with no money in bank', function(){
-    assert.equal(0, amoeba.inventory);
-    // console.log(amoeba.inventory);
+    assert.equal(0, amoeba.balance);
+    // console.log(amoeba.balance);
   });
 
   it('Should calculate record price as profit', function(){
     amoeba.add(hives);
-    assert.equal(9.99, amoeba.inventory);
-    // console.log(amoeba.inventory);
+    assert.equal(9.99, amoeba.balance);
+    // console.log(amoeba.balance);
   });
 
   it("Should be able to accumulate mutiple sales", function(){
     amoeba.add(cameraObscura);
     amoeba.add(hives);
     amoeba.add(soulwax);
-    assert.equal(30.93, amoeba.inventory);
-    // console.log(amoeba.inventory);
+    assert.equal(30.93, amoeba.balance);
+    // console.log(amoeba.balance);
   });
 
   it("Should be able to sell a record from collection", function(){
@@ -86,16 +87,24 @@ describe("Record Store", function(){
     roughTrade.add(soulwax);
     roughTrade.sell(cameraObscura);
     assert.equal(2, roughTrade.collection.length);
-    assert.equal(18.98, roughTrade.inventory)
+    assert.equal(18.98, roughTrade.balance)
     // console.log(roughTrade.collection);
-    // console.log(roughTrade.inventory);
+    // console.log(roughTrade.balance);
   });
 
   it("Should be able to give financial report", function(){
-    roughTrade.add(cameraObscura) + roughTrade.add(hives) + roughTrade.add(soulwax);
-    amoeba.add(cameraObscura) + amoeba.add(cameraObscura) + amoeba.add(soulwax) + amoeba.add(cameraObscura) + amoeba.add(cameraObscura) + amoeba.add(soulwax);
+    roughTrade.add(cameraObscura);
+    roughTrade.add(hives); 
+    roughTrade.add(soulwax);
+    // console.log(roughTrade.balance);
+    amoeba.add(cameraObscura);
+    amoeba.add(cameraObscura);
+    amoeba.add(cameraObscura);
+    amoeba.add(cameraObscura);
+    amoeba.add(soulwax);
+    amoeba.add(soulwax);
     assert.equal("Balance for Rough Trade is 30.93.\nIt has 3 records in stock.", roughTrade.report());
-    assert.equal("Balance for Amoeba Music is 65.78.\nIt has 6 records in stock.", amoeba.report());
+    assert.deepEqual("Balance for Amoeba Music is 65.78.\nIt has 6 records in stock.", amoeba.report());
   });
 
 });
